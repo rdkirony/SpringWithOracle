@@ -7,17 +7,16 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.com.edeploy.bkofficeapi.repository.CompleteWasteRepository;
+import br.com.edeploy.bkofficeapi.repository.IncompleteWasteRepository;
 
 @RestController
-public class CompleteWasteController {
+public class IncompleteWasteController {
 	
 	@Autowired
-	CompleteWasteRepository repository;
+	IncompleteWasteRepository repository;
 	
-	
-	@PostMapping("/insertComplete")
-	public Object insertIntoBD(@RequestBody String completeWaste) throws SQLException {
-		return repository.saveCompleteIntoBD(completeWaste);
+	@PostMapping("/insertIncomplete")
+	public Object insertIntoBD(@RequestBody String incompleteWaste) throws SQLException {
+		return repository.saveIncompleteIntoBD(incompleteWaste);
 	}
 }

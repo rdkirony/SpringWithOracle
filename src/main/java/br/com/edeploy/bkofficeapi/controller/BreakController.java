@@ -7,17 +7,17 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.com.edeploy.bkofficeapi.repository.CompleteWasteRepository;
+import br.com.edeploy.bkofficeapi.repository.BreakRepository;
+
 
 @RestController
-public class CompleteWasteController {
+public class BreakController {
 	
 	@Autowired
-	CompleteWasteRepository repository;
+	BreakRepository repository;
 	
-	
-	@PostMapping("/insertComplete")
-	public Object insertIntoBD(@RequestBody String completeWaste) throws SQLException {
-		return repository.saveCompleteIntoBD(completeWaste);
+	@PostMapping("/insertBreak")
+	public Object insertIntoBD(@RequestBody String breakBody) throws SQLException {
+		return repository.saveBreakIntoBD(breakBody);
 	}
 }

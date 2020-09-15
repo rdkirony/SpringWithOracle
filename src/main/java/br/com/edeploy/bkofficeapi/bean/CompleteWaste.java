@@ -5,53 +5,60 @@
  */
 package br.com.edeploy.bkofficeapi.bean;
 
-
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
-
-
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
 
 
 @Entity
-public class CompleteWaste{
-	
+@Table(name="Complete_Waste")
+public class CompleteWaste {
+
 	@Id
-	private String id;
+	@GeneratedValue(strategy=GenerationType.AUTO)
+	private Long id;
 	
+
+	private String idGuid;
     private Date dcDate;
     private String shiftId;
     private String restaurantId;
     private String status;
-    
+
+    @OneToMany(cascade = {CascadeType.ALL})
+    private List<Justify> justify = new ArrayList<Justify>();
+    @OneToMany(cascade = {CascadeType.ALL})
+    private List<CompleteWasteItens> itens = new ArrayList<CompleteWasteItens>();
+
 
     public CompleteWaste() {
     }
 
-    public CompleteWaste(String id, Date dcDate, String shiftId, String restaurantId, String status) {
-        this.id = id;
+    public CompleteWaste(String idGuid, Date dcDate, String shiftId, String restaurantId, String status, List<Justify> justify) {
+        this.idGuid = idGuid;
         this.dcDate = dcDate;
         this.shiftId = shiftId;
         this.restaurantId = restaurantId;
         this.status = status;
-
-      
+        this.justify = justify;
     }
 
-    public CompleteWaste(String id, Date dcDate, String restaurantId) {
-        this.id = id;
-        this.dcDate = dcDate;
-        this.restaurantId = restaurantId;
-    }
 
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
-
+    public String getIdGuid() {
+		return idGuid;
+	}
+    
+    public void setIdGuid(String idGuid) {
+		this.idGuid = idGuid;
+	}
     public Date getDcDate() {
         return dcDate;
     }
@@ -82,8 +89,27 @@ public class CompleteWaste{
     public void setStatus(String status) {
         this.status = status;
     }
+    public List<Justify> getJustify() {
+		return justify;
+	}
+    public void setJustify(List<Justify> justify) {
+		this.justify = justify;
+	}
+    
+    public List<CompleteWasteItens> getItens() {
+        return itens;
+    }
+
+    public void setItens(List<CompleteWasteItens> itens) {
+        this.itens = itens;
+    }
 
 
+
+
+
+
+	
 
 
 }

@@ -13,8 +13,8 @@ import org.springframework.context.annotation.Configuration;
 import oracle.ucp.jdbc.PoolDataSource;
 import oracle.ucp.jdbc.PoolDataSourceFactory;
 
-//@Configuration
-//@ConfigurationProperties("oracle")
+@Configuration
+@ConfigurationProperties("oracle")
 public class Config {
 	@Bean
 	public DataSource dataSource() throws SQLException {

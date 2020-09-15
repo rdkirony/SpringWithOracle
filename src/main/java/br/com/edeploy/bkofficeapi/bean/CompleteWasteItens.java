@@ -1,51 +1,53 @@
 package br.com.edeploy.bkofficeapi.bean;
 
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+@Entity
+@Table(name="Complete_Waste_Itens")
 public class CompleteWasteItens {
+	
+	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
+	private Long id;
+	
+	private String idGuid;
+	private int valor;
+	private String usuario;
+	
 
-	private String completeWasteId;
-	private Number value;
-	private String user;
 
-	public CompleteWasteItens() {
-	}
-
-	public CompleteWasteItens(String completeWasteId, Number value) {
-		this.completeWasteId = completeWasteId;
-
-		this.value = value;
-
-	}
-
-	public CompleteWasteItens(String completeWasteId, Number value, String user, String restaurantId) {
-		this.completeWasteId = completeWasteId;
-
-		this.value = value;
-		this.user = user;
+	public CompleteWasteItens(String idGuid, int valor, String usuario, String restaurantId) {
+		this.idGuid = idGuid;
+		this.valor = valor;
+		this.usuario = usuario;
 
 	}
-
-	public String getCompleteWasteId() {
-		return completeWasteId;
+	public String getIdGuid() {
+		return idGuid;
 	}
-
-	public void setCompleteWasteId(String completeWasteId) {
-		this.completeWasteId = completeWasteId;
+	public void setIdGuid(String idGuid) {
+		this.idGuid = idGuid;
 	}
+	
 
 	public Number getValue() {
-		return value;
+		return valor;
 	}
 
-	public void setValue(Number value) {
-		this.value = value;
+	public void setValue(int valor) {
+		this.valor = valor;
 	}
 
 
 	public String getUser() {
-		return user;
+		return usuario;
 	}
 
-	public void setUser(String user) {
-		this.user = user;
+	public void setUser(String usuario) {
+		this.usuario = usuario;
 	}
 }

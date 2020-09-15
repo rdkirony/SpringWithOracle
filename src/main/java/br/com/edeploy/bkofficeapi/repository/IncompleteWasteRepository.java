@@ -14,29 +14,27 @@ import com.google.gson.Gson;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 
-import br.com.edeploy.bkofficeapi.bean.CompleteWaste;
+import br.com.edeploy.bkofficeapi.bean.IncompleteWaste;
 
 @Repository
-public class CompleteWasteRepository {
-	final Logger logger = LoggerFactory.getLogger(CompleteWasteRepository.class);
+public class IncompleteWasteRepository {
+	final Logger logger = LoggerFactory.getLogger(IncompleteWasteRepository.class);
 	Connection con;
 	@Autowired
-	CompleteWasteInterface completeWasteInteface;
+	IncompleteWasteInterface incompleteWasteInterface;
 
-	public CompleteWasteRepository(DataSource dataSource) throws SQLException {
+	public IncompleteWasteRepository(DataSource dataSource) throws SQLException {
 		con = dataSource.getConnection();
 	}
 
-	public Object saveCompleteIntoBD(String jsonFile) throws SQLException {
-
+	public Object saveIncompleteIntoBD(String jsonFile) throws SQLException {
+		
 		logger.info(jsonFile);
 		Gson gson = new Gson();
 		JsonElement jsonElement = gson.fromJson(jsonFile, JsonElement.class);
 		JsonObject jsonObject = jsonElement.getAsJsonObject();
-		CompleteWaste object = gson.fromJson(jsonObject, CompleteWaste.class);
-		completeWasteInteface.save(object);
+		IncompleteWaste object = gson.fromJson(jsonObject, IncompleteWaste.class);
+		incompleteWasteInterface.save(object);
 		return object;
-
 	}
-
 }
