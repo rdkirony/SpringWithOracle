@@ -1,6 +1,6 @@
 package br.com.edeploy.bkofficeapi.config;
 
-import java.sql.Connection;
+
 import java.sql.SQLException;
 
 import javax.sql.DataSource;
