@@ -33,6 +33,7 @@ public class Invoice {
 	@OneToMany(cascade = {CascadeType.ALL})
 	private List<InvoiceIngredientResult> ingredients;
 	private String accessCode;
+	@OneToOne(cascade = {CascadeType.ALL})
 	private Restaurant restaurantOrigin;
 	private String userLogin;
 	@OneToOne(cascade = {CascadeType.ALL})
